@@ -1,0 +1,26 @@
+<form #monForm=ngForm >
+    <div>
+        Number 1 : <input type=number name=num1 [(ngModel)]=number1 required #num1="ngModel"/>
+    </div>
+    <div [hidden]="num1.valid || num1.pristine">Le number1 est oligatoire</div>
+    
+    <div>
+        Number 2 : <input type=number name=num2 [(ngModel)]=number2 required #num2="ngModel"/>
+    </div>
+    <div [hidden]="num2.valid || num2.pristine">Le number2 est oligatoire</div>
+    <div>
+        <button class="btn btn-success" [disabled]=!monForm.valid (click)="ajouter()">
+            Ajouter
+        </button>
+        <button class="btn btn-success" [disabled]=!monForm.valid (click)="soustraire()">
+            Soustraire
+        </button>
+        <button class="btn btn-success" [disabled]=!monForm.valid (click)="multiplier()">
+            Multiplier
+        </button>
+        <button class="btn btn-success" [disabled]=!monForm.valid (click)="diviser()">
+            Diviser
+        </button>      
+    </div>
+</form>
+<div>{{ result }}</div>

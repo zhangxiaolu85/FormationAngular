@@ -1,0 +1,43 @@
+<!--
+<div>
+    <input type=text [(ngModel)]=nom />
+</div>
+<div>Bonjour {{ nom }}</div>
+
+        Nom : <input type=text name=nom [(ngModel)]=personne.nom required #nom/>
+    </div>
+    {{ nom.className }}
+    
+    <div>
+-->
+
+<form #monForm=ngForm (ngSubmit)=ajouterPersonne()>
+    <div>
+        Nom : <input type=text name=nom [(ngModel)]=personne.nom required #nom="ngModel"/>
+    </div>
+    <div [hidden]="nom.valid || nom.pristine">Le nom est oligatoire</div>
+    
+    <div>
+        Prenom : <input type=text name=prenom [(ngModel)]=personne.prenom required #prenom="ngModel"/>
+    </div>
+    <div [hidden]="prenom.valid || prenom.pristine">Le prenom est oligatoire</div>
+    <div>
+        <button [disabled]=!monForm.valid>
+            Ajouter
+        </button>       
+    </div>
+</form>
+<ul>
+    <li *ngFor="let per of personnes; index as i">
+        {{ per.nom }} {{ per.prenom }}
+        <button (click)='supprimerPersonne(per)'>
+            Supprimer
+        </button>
+        <button (click)='supprimerPersonneByIndex(i)'>
+            Supprimer par index
+        </button> 
+    </li>
+</ul>
+
+
+
